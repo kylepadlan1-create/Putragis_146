@@ -1,0 +1,30 @@
+-- paldo nanaman
+local ProximityPromptService = game:GetService("ProximityPromptService")
+local Players = game:GetService("Players")
+
+-- paldo ka dito
+local targetPosition = Vector3.new(543.28, 70.57, -366.10)
+
+-- paldo ka dito
+local function teleportPlayerFourTimes()
+    local player = Players.LocalPlayer
+    if player and player.Character then
+        local rootPart = player.Character:FindFirstChild("HumanoidRootPart")
+        if rootPart then
+            -- paldo ka dito
+            for i = 1, 4 do
+                rootPart.CFrame = CFrame.new(targetPosition)
+                task.wait(0.01) -- Ginawang 0.01 para sa instant at mabilis na register
+            end
+        end
+    end
+end
+
+-- paldo ka dito
+ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
+    -- Agad na i-trigger ang prompt (Instant)
+    fireproximityprompt(prompt)
+    
+    -- Paldo ka dito
+    teleportPlayerSevenTimes()
+end)
